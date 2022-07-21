@@ -55,7 +55,7 @@ class MobileNet(nn.Module):
         x = self.stage2(x)
         x = self.stage3(x)
         x = self.avgpool(x)
-        x = torch.view(-1,256)
+        x = x.view(-1,256)
         x = self.fc(x)
         return x
 
