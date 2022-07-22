@@ -40,9 +40,9 @@ class RetinaFace(nn.Module):
         self.feature_2 = SSH(out_channels,out_channels)
         self.feature_3 = SSH(out_channels,out_channels)
         
-        self.makelandmarkhead(fpn_num = 3,inchannels = cfg['out_channel'])
+        self._makelandmarkhead(fpn_num = 3,inchannels = cfg['out_channel'])
         
-    def makelandmarkhead(fpn_num = 3,inchannels = 64,num_anchors = 2):
+    def _makelandmarkhead(self,fpn_num = 3,inchannels = 64,num_anchors = 2):
         landmarkhead = nn.ModuleList()
         for i in range(fpn_num):
             landmarkhead.append(LandmarkHead(inchannels = 64,num_anchors = 2))
