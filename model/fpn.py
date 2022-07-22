@@ -30,9 +30,9 @@ class FPN(nn.Module):
         leaky = 0
         if out_channel <= 64:
             leaky = 0.1
-        self.output1 = conv1x1(in_channel_list[0],out_channel,stride = 1,leaky = leaky)
-        self.output2 = conv1x1(in_channel_list[1],out_channel,stride = 1,leaky = leaky)
-        self.output3 = conv1x1(in_channel_list[2],out_channel,stride = 1,leaky = leaky)
+        self.output1 = conv_bn1x1(in_channel_list[0],out_channel,stride = 1,leaky = leaky)
+        self.output2 = conv_bn1x1(in_channel_list[1],out_channel,stride = 1,leaky = leaky)
+        self.output3 = conv_bn1x1(in_channel_list[2],out_channel,stride = 1,leaky = leaky)
         
         self.merge1 = conv_bn(out_channel,out_channel,leaky = leaky)
         self.merge2 = conv_bn(out_channel,out_channel,leaky = leaky)
