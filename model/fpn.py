@@ -69,7 +69,7 @@ class FPN(nn.Module):
 
 class SSH(nn.Module):
     def __init__(self,in_channel,out_channel):
-        super(self,SSH).__init__()
+        super(SSH,self).__init__()
         assert out_channel%4 ==0
         leaky = 0
         if out_channel <= 64:
