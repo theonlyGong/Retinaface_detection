@@ -1,21 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-
-
-
 import torch
 import torch.nn as nn
-
-
 
 def conv_bn(in_channel,out_channel,stride =1):
     return nn.Sequential(nn.Conv2d(in_channel,out_channel,3,stride,1,bias = False),
                          nn.BatchNorm2d(out_channel),
                          nn.ReLU())
-
-
-
 
 
 def conv_dw(in_channel,out_channel,stride = 1, leaky = 0.1):
@@ -26,9 +18,6 @@ def conv_dw(in_channel,out_channel,stride = 1, leaky = 0.1):
                          nn.BatchNorm2d(out_channel),
                          nn.LeakyReLU(negative_slope = leaky,inplace = True)
               )
-
-
-
 
 class MobileNet(nn.Module):
     def __init__(self):
