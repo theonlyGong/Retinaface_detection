@@ -48,10 +48,6 @@ class MobileNet(nn.Module):
         x = self.fc(x)
         return x
 
-
-
-
-
 mobilenet = MobileNet()
 print(mobilenet)
 
