@@ -1,13 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-
-
 
 # kernel_size = 3 conv layer (cbl module)
 def conv_bn(inp,outp,stride = 1,leaky = 0):
@@ -16,23 +12,16 @@ def conv_bn(inp,outp,stride = 1,leaky = 0):
                         nn.LeakyReLU(negative_slope = leaky,inplace = True))
 
 
-
-
 # 1*1 kernel conv layer
 def conv_bn1x1(inp,outp,stride,leaky = 0):
     return nn.Sequential(nn.Conv2d(inp,outp,1,stride,padding = 0,bias = False),
                         nn.BatchNorm2d(outp),
                         nn.LeakyReLU(negative_slope = leaky,inplace = True))
 
-
-
-
 # conv layer without relu
 def conv_bn_no_relu(inp,outp,stride):
     return nn.Sequential(nn.Conv2d(inp,outp,3,stride,1,bias = False),
                         nn.BatchNorm2d(outp))
-
-
 
 
 class FPN(nn.Module):
@@ -77,8 +66,6 @@ class FPN(nn.Module):
         return out
         
         
-
-
 
 class SSH(nn.Module):
     def __init__(self,in_channel,out_channel):
